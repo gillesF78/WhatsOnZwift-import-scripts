@@ -27,3 +27,8 @@ To import a workout from WhatsOnZwift to intervals.icu:
 * -or- ```whatsonzwift-to-gc.py https://whatsonzwift.com/workouts/threshold/hill-pyramid-at-threshold``` and copy output text to Golden Cheetah > [Workout editor](https://www.youtube.com/watch?v=oq2j4kgNoA0) > New [MRC - Relative Watts] > Properties  
 * -or- ```whatsonzwift-to-intervals.icu.py https://whatsonzwift.com/workouts/threshold/hill-pyramid-at-threshold```  and copy output text to intervals.icu > Edit Calendar Entry > [Workout Builder](https://forum.intervals.icu/t/workout-builder/1163) 
 
+### Golden Cheetah usage demo
+![Golden Cheetah usage demo](/Examples/Example_GC-1.gif.gif)
+
+### intervals.icu usage demo
+![intervals.icu usage demo](Examples/Example_intervals.icu-1.gif.gif)
