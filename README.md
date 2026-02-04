@@ -1,6 +1,6 @@
 # WhatsOnZwift imports scripts
 
-This project is a collection of scripts to imports workouts from WhatsOnZwift to:
+This project is a collection of scripts to import workouts from WhatsOnZwift to:
 - intervals.icu workout text editor
 - GoldenCheetah workout text editor
 
@@ -32,3 +32,4 @@ To import a workout from WhatsOnZwift to intervals.icu:
 
 ### intervals.icu usage demo
 ![intervals.icu usage demo](Examples/Example_intervals.icu-1.gif.gif)
+
