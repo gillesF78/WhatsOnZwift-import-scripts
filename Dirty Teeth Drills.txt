@@ -1,0 +1,28 @@
+4min from 35 to 55% FTP
+3x 20sec @ 105% FTP,
+40sec @ 55% FTP
+1min @ 55% FTP
+30sec @ 100% FTP
+4min 30sec @ 78% FTP
+30sec @ 100% FTP
+4min @ 78% FTP
+30sec @ 100% FTP
+3min @ 55% FTP
+30sec @ 100% FTP
+4min 30sec @ 78% FTP
+30sec @ 100% FTP
+4min @ 78% FTP
+30sec @ 100% FTP
+3min @ 55% FTP
+30sec @ 100% FTP
+4min 30sec @ 78% FTP
+30sec @ 100% FTP
+4min @ 78% FTP
+30sec @ 100% FTP
+3min @ 55% FTP
+30sec @ 100% FTP
+4min 30sec @ 78% FTP
+30sec @ 100% FTP
+4min @ 78% FTP
+30sec @ 100% FTP
+3min from 50 to 30% FTP

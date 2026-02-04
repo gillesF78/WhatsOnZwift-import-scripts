@@ -1,0 +1,72 @@
+#!/usr/bin/env python
+# -*- coding: utf-8; fill-column: 120; truncate-lines: t -*-
+# setup :
+# pip install requests bs4
+# usage :
+#  whatsonzwift-to-gc.py https://whatsonzwift.com/workouts/threshold/hill-pyramid-at-threshold
+import re
+import sys
+
+import requests
+from bs4 import BeautifulSoup
+
+
+def metadata(url):
+    name = url.rpartition('/')[2]
+    page = requests.get(url)
+    soup = BeautifulSoup(page.content, "html.parser")
+    results = soup.find(class_="flex flex-wrap mb-4").find_all('p')
+    return results[-2].text
+
+
+def workout(url):
+    name = url.rpartition('/')[2]
+    page = requests.get(url)
+    soup = BeautifulSoup(page.content, "html.parser")
+    results = soup.find(id=name).find_all(class_="textbar")
+    zwift = ''
+    for element in results:
+        zwift += element.text.strip()
+        zwift += '\n'
+    return zwift[0:-1]
+
+
+def convert(zwift):
+    icu = ""
+    multiplier = False
+
+    # expand multipliers into old text-format multiple lines :-o)
+    zwift = re.sub('FTP,', 'FTP,\n', zwift)
+    # expand multiplied lines
+    bullet_on_steps = '' # was '- '
+    for line in zwift.split('\n'):
+        if re.match('^[1-9]+[xX] .*,\\s*\\Z', line):
+            icu += '\n' + line[:3] #+ '\n'
+            icu += bullet_on_steps + line[3:] + 'r' #was + '\n'
+            multiplier = True
+        elif re.match('^[1-9]+[xX]', line):
+            icu += '\n' + line[:3] #+ '\n'
+            icu += bullet_on_steps + line[3:] + 'r' #was + '\n'
+            multiplier = False
+        elif multiplier == True:
+            icu += bullet_on_steps + line + '\n\n'
+            multiplier = False
+        else:
+            icu += bullet_on_steps + line + '\n'
+
+    # replace words and fix grammar
+    icu = icu.replace('min', 'm').replace('sec', 's') \
+            .replace('from', '@').replace(' to ', '-') \
+            .replace('% FTP', '').replace(',', '').replace('  ', ' ') \
+            .replace('free ride', '50')\
+            .replace('\n+', '\n') + '\n'
+    #icu = icu.replace('@', '')
+    icu = icu.replace(' ', '')
+    icu = re.sub('([0-9]+m) ([0-9]+s)', '\\1\\2', icu)
+    icu = re.sub('([0-9][0-9][0-9]+r+p+m)', '', icu)
+    icu = re.sub('([0-9][0-9]+r+p+m)', '', icu)
+    return icu
+
+if __name__ == '__main__':
+    print(metadata(sys.argv[1]), '\n')
+    print(convert(workout(sys.argv[1])))
